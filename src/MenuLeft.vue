@@ -20,7 +20,7 @@
 
     <div v-if="menuRoutes.length > 0">
       <div v-for="(menu, index) in menuRoutes" :key="'p-' + index">
-        <q-expansion-item v-if="menu.children" :content-inset-level="0.6" group="group" default-opened>
+        <q-expansion-item v-if="menu.children" :value="menu.name && menu.name === menuActive" :content-inset-level="0.6" group="group">
           <template v-slot:header>
             <q-item-section v-if="menuIcon && hasIcon(menu.meta)" side>
               <q-icon :name="menu.meta.icon" :color="iconColor" />
@@ -126,11 +126,13 @@ export default {
   data() {
     return {
       search: '',
+      menuActive: '',
       menuRoutes: []
     }
   },
   created() {
     this.menuRoutes = getMenuItems(this.routes)
+    this.menuActive = !isNull(this.$route.meta) && !isEmpty(this.$route.meta.tag) ? this.$route.meta.tag : (this.$route.name || '')
   },
   methods: {
     handleSearch() {
