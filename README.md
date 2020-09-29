@@ -20,21 +20,21 @@ export default {
     QNavmenuItem
   },
   data() {
-      return {
-          routes: [
-            {
-              path: 'https://www.wuhuawu.com',
-              name: 'http',
-              meta: {
-                title: '测试-外链',
-                icon: 'menu',
-                requiresAuth: false,
-                separator: true,
-                allow: true
-              }
-            }
-          ]
-      }
+    return {
+      routes: [
+        {
+          path: 'https://www.wuhuawu.com',
+          name: 'http',
+          meta: {
+            title: '测试-外链',
+            icon: 'menu',
+            requiresAuth: false,
+            separator: true,
+            allow: true
+          }
+        }
+      ]
+    }
   },
   methods: {
     search(str) {
