@@ -1,0 +1,33 @@
+{
+  "name": "q-navmenu-item",
+  "version": "0.1.0",
+  "description": "quasar-navmenu",
+  "main": "src/NavMenuItem.vue",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "quasar",
+    "navmenu",
+    "menu",
+    "seffeng"
+  ],
+  "author": {
+    "name": "seffeng",
+    "email": "save.zxf@gmail.com"
+  },
+  "dependencies": {
+    "@quasar/extras": "^1.0.0",
+    "quasar": "^1.0.0"
+  },
+  "devDependencies": {
+    "babel-plugin-transform-imports": "1.5.0",
+    "vue-cli-plugin-quasar": "~2.0.2"
+  },
+  "license": "MIT",
+  "deprecated": false,
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/seffeng/quasar-navmenu.git"
+  }
+}
