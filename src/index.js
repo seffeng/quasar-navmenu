@@ -38,11 +38,11 @@ export function hasProperty(obj, attr) {
  */
 export function getMenuItems(router) {
   const menuItems = []
-  for (const i in router) {
+  for (var i in router) {
     if (!isNull(router[i].children) && router[i].children.length > 0) {
       const children = router[i].children
       const child = []
-      for (const j in children) {
+      for (var j in children) {
         if (isNull(children[j].hidden) || children[j].hidden === false) {
           child.push({
             name: children[j].name,
@@ -61,12 +61,12 @@ export function getMenuItems(router) {
           children: child
         })
       } else {
-        for (const j in child) {
+        for (var k in child) {
           menuItems.push({
-            name: child[j].name,
-            path: child[j].path,
-            external: isExternal(child[j].path),
-            meta: child[j].meta
+            name: child[k].name,
+            path: child[k].path,
+            external: isExternal(child[k].path),
+            meta: child[k].meta
           })
         }
       }
