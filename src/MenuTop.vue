@@ -43,7 +43,7 @@
                     <div>{{ child.meta.title }}</div>
                   </q-item>
 
-                  <q-separator v-if="child.meta.separator" />
+                  <q-separator v-if="child.meta && child.meta.separator" />
                 </q-list>
               </template>
             </q-btn-dropdown>
@@ -77,7 +77,7 @@
         </q-route-tab>
       </div>
 
-      <q-separator v-if="!menuTop && menu.meta.separator" />
+      <q-separator v-if="!menuTop && menu.meta && menu.meta.separator" />
     </div>
 
     <div v-if="showSearch">

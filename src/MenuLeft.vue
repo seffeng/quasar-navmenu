@@ -50,6 +50,7 @@
                   <q-item-label lines="1">{{ child.meta.title }}</q-item-label>
                 </q-item-section>
               </q-item>
+              <q-separator v-if="child.meta && child.meta.separator" />
             </div>
           </template>
         </q-expansion-item>
@@ -63,6 +64,7 @@
               </a>
             </template>
           </q-item-section>
+          <q-separator v-if="menu.meta && menu.meta.separator" />
         </q-item>
 
         <q-item v-else v-ripple :to="{name: menu.name}" clickable>
@@ -73,6 +75,7 @@
             <q-item-label v-if="hasTitle(menu.meta)" lines="1">{{ menu.meta.title }}</q-item-label>
           </q-item-section>
         </q-item>
+        <q-separator v-if="menu.meta && menu.meta.separator" />
       </div>
     </div>
   </q-list>
