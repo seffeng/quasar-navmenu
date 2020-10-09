@@ -171,8 +171,12 @@ export default {
   },
   methods: {
     handleSearch() {
-      if (typeof this.searchCallback === 'function' && typeof this.search === 'string') {
-        this.searchCallback(this.search.trim())
+      if (typeof this.searchCallback === 'function') {
+        if (typeof this.search === 'string') {
+          this.searchCallback(this.search.trim())
+        } else {
+          this.searchCallback('')
+        }
       }
     },
     hasIcon(meta) {
