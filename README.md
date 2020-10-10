@@ -47,18 +47,18 @@ export default {
 
 ## 参数
 
-| 参数                 | 类型     | 默认  | 说明                                      |
-| -------------------- | -------- | ----- | ----------------------------------------- |
-| routes               | array    | -     | 必须，路由                                |
-| menu-type            | string   | tabs  | 位置[tabs(q-tabs), item(q-item)]          |
-| menu-vertical        | boolean  | false | menu-type为 tabs 时[true-垂直，false-水平]|
-| menu-active-bg-color | string   | ''    | menu-type为 tabs 时，菜单激活颜色         |
-| menu-icon            | boolean  | true  | 是否显示图标                              |
-| input-bg-color       | string   | white | 搜索框背景                                |
-| input-rounded        | boolean  | true  | 搜索框 rounded                            |
-| input-outlined       | boolean  | true  | 搜索框 outlined                           |
-| input-dense          | boolean  | true  | 搜索框 dense                              |
-| icon-color           | string   | ''    | 图标颜色                                  |
-| show-search          | boolean  | true  | 是否显示搜索                              |
-| search-callback      | function | -     | 搜索回调方法，返回搜索框value值           |
+| 参数                 | 类型     | 默认  | 说明                                       |
+| -------------------- | -------- | ----- | ------------------------------------------ |
+| routes               | array    | -     | 必须，路由                                 |
+| menu-type            | string   | tabs  | 类型[tabs(q-tabs), item(q-item)]           |
+| menu-vertical        | boolean  | false | menu-type为 tabs 时[true-垂直，false-水平] |
+| menu-active-bg-color | string   | ''    | menu-type为 tabs 时，菜单激活颜色          |
+| menu-icon            | boolean  | true  | 是否显示图标                               |
+| input-bg-color       | string   | white | 搜索框背景                                 |
+| input-rounded        | boolean  | true  | 搜索框 rounded                             |
+| input-outlined       | boolean  | true  | 搜索框 outlined                            |
+| input-dense          | boolean  | true  | 搜索框 dense                               |
+| icon-color           | string   | ''    | 图标颜色                                   |
+| show-search          | boolean  | true  | 是否显示搜索                               |
+| search-callback      | function | -     | 搜索回调方法，返回搜索框value值            |
 
