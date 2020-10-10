@@ -1,7 +1,7 @@
 <template>
   <MenuTop
-    v-if="position === 'top'"
-    :menu-top="menuTop"
+    v-if="menuType === 'tabs'"
+    :menu-vertical="menuVertical"
     :menu-icon="menuIcon"
     :menu-active-bg-color="menuActiveBgColor"
     :menu-dense="menuDense"
@@ -40,13 +40,13 @@ export default {
     MenuLeft
   },
   props: {
-    position: {
+    menuType: {
       type: String,
-      default: 'top'
+      default: 'tabs'
     },
-    menuTop: {
+    menuVertical: {
       type: Boolean,
-      default: true
+      default: false
     },
     menuActiveBgColor: {
       type: String,

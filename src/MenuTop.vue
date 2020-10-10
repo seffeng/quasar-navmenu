@@ -2,7 +2,7 @@
   <q-tabs
     v-if="menuRoutes.length > 0"
     :value="menuActive"
-    :vertical="!menuTop"
+    :vertical="menuVertical"
     :active-bg-color="menuActiveBgColor"
     :dense="menuDense"
     inline-label
@@ -77,11 +77,11 @@
         </q-route-tab>
       </div>
 
-      <q-separator v-if="!menuTop && menu.meta && menu.meta.separator" />
+      <q-separator v-if="menuVertical && menu.meta && menu.meta.separator" />
     </div>
 
     <div v-if="showSearch">
-      <q-separator v-if="!menuTop" spaced />
+      <q-separator v-if="menuVertical" spaced />
       <q-input
         v-model="search"
         placeholder="search"
@@ -107,9 +107,9 @@ import { getMenuItems, isEmpty, isNull, hasProperty } from './index'
 export default {
   name: 'MenuTop',
   props: {
-    menuTop: {
+    menuVertical: {
       type: Boolean,
-      default: true
+      default: false
     },
     menuActiveBgColor: {
       type: String,

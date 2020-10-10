@@ -50,9 +50,9 @@ export default {
 | 参数                 | 类型     | 默认  | 说明                                      |
 | -------------------- | -------- | ----- | ----------------------------------------- |
 | routes               | array    | -     | 必须，路由                                |
-| position             | string   | top   | 位置[top, left]                           |
-| menu-top             | boolean  | true  | position 为 top 时[true-水平，false-垂直] |
-| menu-active-bg-color | string   | ''    | position 为 top 时，菜单激活颜色          |
+| menu-type            | string   | tabs  | 位置[tabs(q-tabs), item(q-item)]          |
+| menu-vertical        | boolean  | false | menu-type为 tabs 时[true-垂直，false-水平]|
+| menu-active-bg-color | string   | ''    | menu-type为 tabs 时，菜单激活颜色         |
 | menu-icon            | boolean  | true  | 是否显示图标                              |
 | input-bg-color       | string   | white | 搜索框背景                                |
 | input-rounded        | boolean  | true  | 搜索框 rounded                            |
