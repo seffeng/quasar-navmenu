@@ -1,7 +1,7 @@
 <template>
   <q-tabs
     v-if="menuRoutes.length > 0"
-    :value="menuActive"
+    :value="menuActive()"
     :vertical="menuVertical"
     :active-bg-color="menuActiveBgColor"
     :dense="menuDense"
@@ -16,7 +16,6 @@
             <q-btn-dropdown
               align="left"
               class="ellipsis"
-              auto-close
               no-caps
               no-wrap
             >
@@ -26,25 +25,60 @@
               </template>
 
               <template v-slot:default>
-                <q-list v-for="(child, k) in menu.children" :key="'c-' + k" class="text-no-wrap">
-                  <q-item v-if="child.external">
-                    <q-item-section>
-                      <template v-slot:default>
-                        <a :href="child.path" target="_blank" class="ellipsis row text-dark">
-                          <q-icon v-if="menuIcon && hasIcon(child.meta)" :color="iconColor" :name="child.meta.icon" size="sm" left />
-                          <div v-if="hasTitle(child.meta)">{{ child.meta.title }}</div>
-                        </a>
+                <div v-for="(child, k) in menu.children" :key="'c-' + k" class="text-no-wrap">
+                  <q-list>
+                    <q-expansion-item v-if="child.children" :content-inset-level="0.6" group="subGroup">
+                      <template v-slot:header>
+                        <q-item-section v-if="menuIcon && hasIcon(child.meta)" side>
+                          <q-icon :name="child.meta.icon" :color="iconColor" />
+                        </q-item-section>
+                        <q-item-section>
+                          <q-item-label v-if="hasTitle(child.meta)" lines="1">{{ child.meta.title }}</q-item-label>
+                        </q-item-section>
                       </template>
-                    </q-item-section>
-                  </q-item>
 
-                  <q-item v-else :to="{ name: child.name }" clickable class="text-dark" exact>
-                    <q-icon v-if="menuIcon && hasIcon(child.meta)" :color="iconColor" :name="child.meta.icon" size="sm" left />
-                    <div>{{ child.meta.title }}</div>
-                  </q-item>
+                      <template v-slot:default>
+                        <div v-for="(subChild, m) in child.children" :key="'d-' + m">
+                          <q-list>
+                            <q-item v-if="subChild.external" v-close-popup tag="a" :href="subChild.path" target="_blank">
+                              <q-item-section v-if="menuIcon && hasIcon(subChild.meta)" side>
+                                <q-icon :name="subChild.meta.icon" :color="iconColor" />
+                              </q-item-section>
+                              <q-item-section>
+                                <q-item-label v-if="hasTitle(subChild.meta)" lines="1">{{ subChild.meta.title }}</q-item-label>
+                              </q-item-section>
+                            </q-item>
+                            <q-item v-else v-ripple :to="{name: subChild.name}">
+                              <q-item-section v-if="menuIcon && hasIcon(subChild.meta)" side>
+                                <q-icon :name="subChild.meta.icon" :color="iconColor" />
+                              </q-item-section>
+                              <q-item-section>
+                                <q-item-label v-if="hasTitle(subChild.meta)" lines="1">{{ subChild.meta.title }}</q-item-label>
+                              </q-item-section>
+                            </q-item>
+                            <q-separator v-if="subChild.meta && subChild.meta.separator" />
+                          </q-list>
+                        </div>
+                      </template>
+                    </q-expansion-item>
 
-                  <q-separator v-if="child.meta && child.meta.separator" />
-                </q-list>
+                    <q-item v-else-if="child.external" v-close-popup :href="child.path" tag="a" target="_blank">
+                      <q-item-section v-if="menuIcon && hasIcon(child.meta)" side>
+                        <q-icon :name="child.meta.icon" :color="iconColor" />
+                      </q-item-section>
+                      <q-item-section>
+                        <q-item-label v-if="hasTitle(child.meta)" lines="1">{{ child.meta.title }}</q-item-label>
+                      </q-item-section>
+                    </q-item>
+
+                    <q-item v-else :to="{ name: child.name }" class="text-dark" exact>
+                      <q-icon v-if="menuIcon && hasIcon(child.meta)" :color="iconColor" :name="child.meta.icon" size="sm" left />
+                      <div>{{ child.meta.title }}</div>
+                    </q-item>
+
+                    <q-separator v-if="child.meta && child.meta.separator" />
+                  </q-list>
+                </div>
               </template>
             </q-btn-dropdown>
           </template>
@@ -102,7 +136,7 @@
 </template>
 
 <script>
-import { getMenuItems, isEmpty, isNull, hasProperty } from './index'
+import { getMenuItems, isEmpty, hasProperty } from './index'
 
 export default {
   name: 'MenuTop',
@@ -161,13 +195,11 @@ export default {
   data() {
     return {
       search: '',
-      menuActive: '',
       menuRoutes: []
     }
   },
   created() {
     this.menuRoutes = getMenuItems(this.routes)
-    this.menuActive = !isNull(this.$route.meta) && !isEmpty(this.$route.meta.tag) ? this.$route.meta.tag : (this.$route.name || '')
   },
   methods: {
     handleSearch() {
@@ -184,6 +216,15 @@ export default {
     },
     hasTitle(meta) {
       return !isEmpty(meta) && hasProperty(meta, 'title')
+    },
+    menuActive() {
+      const matched = this.$route.matched
+      if (matched) {
+        for (var i in matched) {
+          return matched[i].name
+        }
+      }
+      return ''
     }
   }
 }

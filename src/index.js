@@ -44,12 +44,43 @@ export function getMenuItems(router) {
       const child = []
       for (var j in children) {
         if (isNull(children[j].hidden) || children[j].hidden === false) {
-          child.push({
-            name: children[j].name,
-            path: children[j].path,
-            external: isExternal(children[j].path),
-            meta: children[j].meta
-          })
+          if (!isNull(children[j].children) && children[j].children.length > 0) {
+            const tmpSubChildren = children[j].children
+            const subChildren = []
+            for (var m in tmpSubChildren) {
+              subChildren.push({
+                name: tmpSubChildren[m].name,
+                path: tmpSubChildren[m].path,
+                external: isExternal(tmpSubChildren[m].path),
+                meta: tmpSubChildren[m].meta
+              })
+            }
+            if (subChildren.length > 1) {
+              child.push({
+                name: children[j].name,
+                path: children[j].path,
+                external: isExternal(children[j].path),
+                meta: children[j].meta,
+                children: subChildren
+              })
+            } else {
+              for (var n in subChildren) {
+                child.push({
+                  name: subChildren[n].name,
+                  path: subChildren[n].path,
+                  external: isExternal(subChildren[n].path),
+                  meta: subChildren[n].meta
+                })
+              }
+            }
+          } else {
+            child.push({
+              name: children[j].name,
+              path: children[j].path,
+              external: isExternal(children[j].path),
+              meta: children[j].meta
+            })
+          }
         }
       }
       if (child.length > 1) {

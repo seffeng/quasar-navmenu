@@ -1,6 +1,6 @@
 {
   "name": "q-navmenu-item",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "quasar-navmenu",
   "main": "src/NavMenuItem.vue",
   "scripts": {
@@ -17,8 +17,8 @@
     "email": "save.zxf@gmail.com"
   },
   "dependencies": {
-    "@quasar/extras": "^1.0.0",
-    "quasar": "^1.0.0"
+    "@quasar/extras": "^1.9.8",
+    "quasar": "^1.14.5"
   },
   "devDependencies": {
     "babel-plugin-transform-imports": "1.5.0",

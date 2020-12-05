@@ -62,3 +62,10 @@ export default {
 | show-search          | boolean  | true  | 是否显示搜索                               |
 | search-callback      | function | -     | 搜索回调方法，返回搜索框value值            |
 
+## 备注
+
+* 当前路由只支持到 3 级，即只能有两层（个） children
+
+* 示例：[vue-web-demo](https://github.com/seffeng/vue-web-demo/tree/quasar)
+
+  
