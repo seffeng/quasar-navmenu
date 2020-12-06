@@ -11,11 +11,13 @@
   >
     <div v-for="(menu, index) in menuRoutes" :key="'p-' + index">
       <div v-if="menu.children">
-        <q-tab :name="menu.name" ripple>
+        <q-tab :name="menu.name" ripple class="q-pa-none">
           <template v-slot:default>
             <q-btn-dropdown
               align="left"
-              class="ellipsis"
+              class="ellipsis q-px-md"
+              stretch
+              flat
               no-caps
               no-wrap
             >
@@ -33,7 +35,7 @@
                           <q-icon :name="child.meta.icon" :color="iconColor" />
                         </q-item-section>
                         <q-item-section>
-                          <q-item-label v-if="hasTitle(child.meta)" lines="1">{{ child.meta.title }}</q-item-label>
+                          <q-item-label v-if="hasTitle(child.meta)">{{ child.meta.title }}</q-item-label>
                         </q-item-section>
                       </template>
 
@@ -45,7 +47,7 @@
                                 <q-icon :name="subChild.meta.icon" :color="iconColor" />
                               </q-item-section>
                               <q-item-section>
-                                <q-item-label v-if="hasTitle(subChild.meta)" lines="1">{{ subChild.meta.title }}</q-item-label>
+                                <q-item-label v-if="hasTitle(subChild.meta)">{{ subChild.meta.title }}</q-item-label>
                               </q-item-section>
                             </q-item>
                             <q-item v-else v-ripple :to="{name: subChild.name}">
@@ -53,7 +55,7 @@
                                 <q-icon :name="subChild.meta.icon" :color="iconColor" />
                               </q-item-section>
                               <q-item-section>
-                                <q-item-label v-if="hasTitle(subChild.meta)" lines="1">{{ subChild.meta.title }}</q-item-label>
+                                <q-item-label v-if="hasTitle(subChild.meta)">{{ subChild.meta.title }}</q-item-label>
                               </q-item-section>
                             </q-item>
                             <q-separator v-if="subChild.meta && subChild.meta.separator" />
@@ -67,13 +69,17 @@
                         <q-icon :name="child.meta.icon" :color="iconColor" />
                       </q-item-section>
                       <q-item-section>
-                        <q-item-label v-if="hasTitle(child.meta)" lines="1">{{ child.meta.title }}</q-item-label>
+                        <q-item-label v-if="hasTitle(child.meta)">{{ child.meta.title }}</q-item-label>
                       </q-item-section>
                     </q-item>
 
-                    <q-item v-else :to="{ name: child.name }" class="text-dark" exact>
-                      <q-icon v-if="menuIcon && hasIcon(child.meta)" :color="iconColor" :name="child.meta.icon" size="sm" left />
-                      <div>{{ child.meta.title }}</div>
+                    <q-item v-else :to="{ name: child.name }" exact>
+                      <q-item-section v-if="menuIcon && hasIcon(child.meta)" side>
+                        <q-icon :name="child.meta.icon" :color="iconColor" />
+                      </q-item-section>
+                      <q-item-section>
+                        <q-item-label v-if="hasTitle(child.meta)">{{ child.meta.title }}</q-item-label>
+                      </q-item-section>
                     </q-item>
 
                     <q-separator v-if="child.meta && child.meta.separator" />
@@ -86,14 +92,16 @@
       </div>
 
       <div v-else>
-        <q-tab v-if="menu.external" :name="menu.name" ripple>
+        <q-tab v-if="menu.external" :name="menu.name" ripple class="q-pa-none">
           <template v-slot:default>
             <q-btn
               align="left"
               type="a"
               :href="menu.path"
               target="_blank"
-              class="ellipsis"
+              class="ellipsis q-px-md"
+              stretch
+              flat
               no-caps
               no-wrap
             >
