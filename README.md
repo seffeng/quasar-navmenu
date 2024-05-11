@@ -10,14 +10,14 @@ npm install q-navmenu-item
 
 ```vue
 <template>
-  <q-navmenu-item :routes="routes" :search-callback="search" />
+  <q-nav-menu :routes="routes" :search-callback="search" />
 </template>
 
 <script>
-import QNavmenuItem from 'q-navmenu-item'
+import QNavMenu from 'q-navmenu-item'
 export default {
   components: {
-    QNavmenuItem
+    QNavMenu
   },
   data() {
     return {

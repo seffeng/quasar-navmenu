@@ -43,7 +43,7 @@ export function routerToMenu (router) {
       const children = router[i].children
       const child = []
       for (const j in children) {
-        if (isNull(children[j].hidden) || children[j].hidden === false) {
+        if (isNull(children[j].meta) || isNull(children[j].meta.hidden) || children[j].meta.hidden === false) {
           if (!isNull(children[j].children) && children[j].children.length > 0) {
             const tmpSubChildren = children[j].children
             const subChildren = []
