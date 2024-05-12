@@ -17,6 +17,7 @@
         :icon="hasIcon(route.meta) ? route.meta.icon : none"
         :label="hasTitle(route.meta) ? route.meta.title : ''"
         :title="hasTitle(route.meta) ? route.meta.title : ''"
+        :dropdown-icon="expandedIcon"
       >
         <q-list :class="menuClass">
           <div v-for="(child, cIndex) in route.children" :key="'p-c-' + cIndex">
@@ -30,7 +31,7 @@
               </q-item-section>
               <q-item-section v-if="hasTitle(child.meta)" :title="child.meta.title">{{ child.meta.title }}</q-item-section>
               <q-item-section avatar>
-                <q-icon name="keyboard_arrow_right" />
+                <q-icon :name="expandIcon" />
               </q-item-section>
               <q-menu
                 anchor="top end"
@@ -139,7 +140,7 @@
     <div v-if="showSearch">
       <q-input
         v-model="search"
-        placeholder="search"
+        :placeholder="searchPlaceholder"
         :bg-color="inputBgColor"
         style="min-width: 120px"
         :input-class="inputClass"
@@ -151,7 +152,7 @@
         @keyup.enter="handleSearch"
       >
         <template v-slot:prepend>
-          <q-btn round dense flat icon="search" @click="handleSearch" />
+          <q-btn round dense flat :icon="searchIcon" @click="handleSearch" />
         </template>
       </q-input>
     </div>
@@ -178,6 +179,13 @@ export default defineComponent({
       type: Boolean,
       default: false
     },
+    expandIcon: {
+      type: String,
+      default: 'keyboard_arrow_right'
+    },
+    expandedIcon: {
+      type: String
+    },
     tabClass: {
       type: String,
       default: ''
@@ -195,6 +203,14 @@ export default defineComponent({
       default () {
         return ''
       }
+    },
+    searchIcon: {
+      type: String,
+      default: 'search'
+    },
+    searchPlaceholder: {
+      type: String,
+      default: 'search'
     },
     inputBgColor: {
       type: String,

@@ -4,7 +4,7 @@
       <div v-if="showSearch" class="q-pa-sm">
         <q-input
           v-model="search"
-          placeholder="search"
+          :placeholder="searchPlaceholder"
           :bg-color="inputBgColor"
           style="min-width: 120px"
           :input-class="inputClass"
@@ -16,7 +16,7 @@
           @keyup.enter="handleSearch"
         >
           <template v-slot:prepend>
-            <q-btn round dense flat icon="search" @click="handleSearch" />
+            <q-btn round dense flat :icon="searchIcon" @click="handleSearch" />
           </template>
         </q-input>
       </div>
@@ -25,6 +25,8 @@
         <q-expansion-item
           v-if="route.children && route.children.length > 0"
           :dense="dense"
+          :expand-icon="expandIcon"
+          :expanded-icon="expandedIcon"
           :icon="hasIcon(route.meta) ? route.meta.icon : ''"
           :label="hasTitle(route.meta) ? route.meta.title : ''"
           :title="hasTitle(route.meta) ? route.meta.title : ''"
@@ -40,6 +42,8 @@
               :header-inset-level="0.3"
               :content-inset-level="0.6"
               :default-opened="isOpened(child.meta)"
+              :expand-icon="expandIcon"
+              :expanded-icon="expandedIcon"
               :icon="hasIcon(child.meta) ? child.meta.icon : ''"
               :label="hasTitle(child.meta) ? child.meta.title : ''"
               :title="hasTitle(child.meta) ? child.meta.title : ''"
@@ -51,6 +55,8 @@
                 <q-expansion-item
                   v-if="isExternal(subChild.meta)"
                   :dense="dense"
+                  :expand-icon="expandIcon"
+                  :expanded-icon="expandedIcon"
                   :icon="hasIcon(subChild.meta) ? subChild.meta.icon : ''"
                   :label="hasTitle(subChild.meta) ? subChild.meta.title : ''"
                   :title="hasTitle(subChild.meta) ? subChild.meta.title : ''"
@@ -64,6 +70,8 @@
                 <q-expansion-item
                   v-else
                   :dense="dense"
+                  :expand-icon="expandIcon"
+                  :expanded-icon="expandedIcon"
                   :icon="hasIcon(subChild.meta) ? subChild.meta.icon : ''"
                   :label="hasTitle(subChild.meta) ? subChild.meta.title : ''"
                   :title="hasTitle(subChild.meta) ? subChild.meta.title : ''"
@@ -81,6 +89,8 @@
               <q-expansion-item
                 v-if="isExternal(child.meta)"
                 :dense="dense"
+                :expand-icon="expandIcon"
+                :expanded-icon="expandedIcon"
                 :header-inset-level="0.3"
                 :content-inset-level="0.6"
                 :icon="hasIcon(child.meta) ? child.meta.icon : ''"
@@ -96,6 +106,8 @@
               <q-expansion-item
                 v-else
                 :dense="dense"
+                :expand-icon="expandIcon"
+                :expanded-icon="expandedIcon"
                 :header-inset-level="0.3"
                 :content-inset-level="0.6"
                 :icon="hasIcon(child.meta) ? child.meta.icon : ''"
@@ -116,6 +128,8 @@
           <q-expansion-item
             v-if="isExternal(route.meta)"
             :dense="dense"
+            :expand-icon="expandIcon"
+            :expanded-icon="expandedIcon"
             :icon="hasIcon(route.meta) ? route.meta.icon : ''"
             :label="hasTitle(route.meta) ? route.meta.title : ''"
             :title="hasTitle(route.meta) ? route.meta.title : ''"
@@ -129,6 +143,8 @@
           <q-expansion-item
             v-else
             :dense="dense"
+            :expand-icon="expandIcon"
+            :expanded-icon="expandedIcon"
             :icon="hasIcon(route.meta) ? route.meta.icon : ''"
             :label="hasTitle(route.meta) ? route.meta.title : ''"
             :title="hasTitle(route.meta) ? route.meta.title : ''"
@@ -161,6 +177,12 @@ export default defineComponent({
       type: Boolean,
       default: false
     },
+    expandIcon: {
+      type: String
+    },
+    expandedIcon: {
+      type: String
+    },
     tabClass: {
       type: String,
       default: ''
@@ -178,6 +200,14 @@ export default defineComponent({
       default () {
         return ''
       }
+    },
+    searchIcon: {
+      type: String,
+      default: 'search'
+    },
+    searchPlaceholder: {
+      type: String,
+      default: 'search'
     },
     inputBgColor: {
       type: String,

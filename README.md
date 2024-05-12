@@ -83,6 +83,8 @@ export default {
 | active-color | string   | ''    | 菜单激活时颜色（仅vertical=false时生效） |
 | active-bg-color | string | '' | 菜单背景颜色（仅vertical=false时生效） |
 | dense | boolean | false | 紧凑模式 |
+| expand-icon | string | - | 展开图标（vertical=false时为二级菜单图标） |
+| expanded-icon | string | -      | 展开后图标（vertical=false时为一级菜单图标） |
 | tab-class | string | '' | 菜单样式 |
 | menu-class | string | '' | 菜单样式 |
 | input-bg-color       | string   | '' | 搜索框背景                                 |
@@ -93,6 +95,8 @@ export default {
 | input-style | string | '' | 搜索框样式 |
 | show-search          | boolean  | true  | 是否显示搜索                               |
 | search-callback      | function | -     | 搜索回调方法，返回搜索框value值            |
+| search-icon | string | search | 搜索框图标 |
+| search-placeholder | string | search | 搜索框 placeholder |
 
 ## 备注
 

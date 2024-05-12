@@ -4,10 +4,14 @@
     :routes="menu()"
     :bordered="bordered"
     :dense="dense"
+    :expand-icon="expandIcon"
+    :expanded-icon="expandedIcon"
     :tab-class="tabClass"
     :menu-class="menuClass"
     :show-search="showSearch"
     :search-callback="searchCallback"
+    :search-icon="searchIcon"
+    :search-placeholder="searchPlaceholder"
     :input-bg-color="inputBgColor"
     :input-rounded="inputRounded"
     :input-outlined="inputOutlined"
@@ -22,10 +26,14 @@
     :active-color="activeColor"
     :active-bg-color="activeBgColor"
     :dense="dense"
+    :expand-icon="expandIcon"
+    :expanded-icon="expandedIcon"
     :tab-class="tabClass"
     :menu-class="menuClass"
     :show-search="showSearch"
     :search-callback="searchCallback"
+    :search-icon="searchIcon"
+    :search-placeholder="searchPlaceholder"
     :input-bg-color="inputBgColor"
     :input-rounded="inputRounded"
     :input-outlined="inputOutlined"
@@ -68,6 +76,12 @@ export default defineComponent({
       type: Boolean,
       default: false
     },
+    expandIcon: {
+      type: String
+    },
+    expandedIcon: {
+      type: String
+    },
     tabClass: {
       type: String,
       default: ''
@@ -85,6 +99,14 @@ export default defineComponent({
       default () {
         return ''
       }
+    },
+    searchIcon: {
+      type: String,
+      default: 'search'
+    },
+    searchPlaceholder: {
+      type: String,
+      default: 'search'
     },
     inputBgColor: {
       type: String,

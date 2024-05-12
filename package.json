@@ -1,6 +1,6 @@
 {
   "name": "q-navmenu-item",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "quasar-navmenu",
   "main": "src/NavMenu.vue",
   "scripts": {
