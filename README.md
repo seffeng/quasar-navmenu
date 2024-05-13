@@ -95,6 +95,7 @@ export default {
 | input-dense          | boolean  | true  | 搜索框 dense                               |
 | input-class | string   | ''    | 搜索框 class                 |
 | input-style | string | '' | 搜索框样式 |
+| clear-icon | string | - | 清除按钮图标 |
 | show-search          | boolean  | true  | 是否显示搜索                               |
 | search-callback      | function | -     | 搜索回调方法，返回搜索框value值            |
 | search-icon | string | search | 搜索框图标 |

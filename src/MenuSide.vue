@@ -13,6 +13,7 @@
           :outlined="inputOutlined"
           :dense="inputDense"
           clearable
+          :clear-icon="clearIcon"
           @keyup.enter="handleSearch"
         >
           <template v-slot:prepend>
@@ -190,6 +191,9 @@ export default defineComponent({
     menuClass: {
       type: String,
       default: ''
+    },
+    clearIcon: {
+      type: String
     },
     showSearch: {
       type: Boolean,

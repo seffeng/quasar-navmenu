@@ -8,6 +8,7 @@
     :expanded-icon="expandedIcon"
     :tab-class="tabClass"
     :menu-class="menuClass"
+    :clear-icon="clearIcon"
     :show-search="showSearch"
     :search-callback="searchCallback"
     :search-icon="searchIcon"
@@ -32,6 +33,7 @@
     :expanded-icon="expandedIcon"
     :tab-class="tabClass"
     :menu-class="menuClass"
+    :clear-icon="clearIcon"
     :show-search="showSearch"
     :search-callback="searchCallback"
     :search-icon="searchIcon"
@@ -97,6 +99,9 @@ export default defineComponent({
     menuClass: {
       type: String,
       default: ''
+    },
+    clearIcon: {
+      type: String
     },
     showSearch: {
       type: Boolean,
