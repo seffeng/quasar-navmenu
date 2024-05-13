@@ -85,6 +85,8 @@ export default {
 | dense | boolean | false | 紧凑模式 |
 | expand-icon | string | - | 展开图标（vertical=false时为二级菜单图标） |
 | expanded-icon | string | -      | 展开后图标（vertical=false时为一级菜单图标） |
+| tab-left-icon | string | - | 导航超出宽度时，向左滚动的图标（仅vertical=false时生效） |
+| tab-right-icon | string | - | 导航超出宽度时，向右滚动的图标（仅vertical=false时生效） |
 | tab-class | string | '' | 菜单样式 |
 | menu-class | string | '' | 菜单样式 |
 | input-bg-color       | string   | '' | 搜索框背景                                 |

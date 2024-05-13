@@ -8,6 +8,8 @@
     :active-color="activeColor"
     :active-bg-color="activeBgColor"
     :class="tabClass"
+    :left-icon="tabLeftIcon"
+    :right-icon="tabRightIcon"
   >
     <div v-for="(route, index) in routes" :key="'p-' + index">
       <q-btn-dropdown
@@ -178,6 +180,12 @@ export default defineComponent({
     dense: {
       type: Boolean,
       default: false
+    },
+    tabLeftIcon: {
+      type: String
+    },
+    tabRightIcon: {
+      type: String
     },
     expandIcon: {
       type: String,
